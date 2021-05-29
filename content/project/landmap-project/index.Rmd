@@ -1,0 +1,52 @@
+---
+title: "Endangered species critical habitat for sale"
+author: "Emily"
+date: "5/26/2021"
+output: html_document
+summary: "Land over 100 acres for sale in endangered species habitats"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, echo=F}
+library(leaflet,RColorBrewer)
+
+
+dat=read.csv("~/Google Drive/My Drive/fka_Dropbox/Landcheck/alllandwatchcrithab_2021-05-26.csv")
+data_date <- "2021-05-26"
+
+badcolnames <- colnames(dat)
+
+goodcolnames <- c(badcolnames[2:(ncol(dat)-1)],"longitude","latitude")
+
+colnames(dat) <- goodcolnames
+
+dat$longitude <- as.numeric(substr(dat$longitude,3,nchar(as.character(dat$longitude))))
+dat$latitude <-as.numeric(gsub(")","",dat$latitude))
+
+dat <- dat[dat$price>1000,]
+dat$logacreprice <- log(dat$acreprice)
+
+```
+
+```{r, echo=F, fig.width=14, fig.height=12, fig.align='center'}
+#pricepal <- colorRampPalette(brewer.pal(7,"Greens"))(100)
+#comname = "Bachman's sparrow"
+
+pal <- colorNumeric(
+  palette = colorRampPalette(c('green', 'red'))(length(dat$logacreprice)), 
+  domain = dat$logacreprice)
+
+m <- leaflet(data=dat)  %>% addTiles() %>% addCircleMarkers(color =  ~pal(dat$logacreprice)) %>%#, radius = dat$acres/500) %>%
+ # addProviderTiles(providers$Esri.WorldImagery) %>%  # Add default OpenStreetMap map tiles
+#  setView(-96.7, 25.8, zoom = 3) %>%
+  addMarkers(~longitude, ~latitude, popup=~paste0(comname,", ",acres," acres in ",city,", ",state,  ": ", ' <a href="https://www.landwatch.com',canonicalUrl,'"> See listing </a>'))
+
+m
+```
+```{r, echo=F}
+print(paste("Land listing data retrieved",data_date))
+print(paste("Total listings found in endangered species habitat:",nrow(dat)+1))
+```
