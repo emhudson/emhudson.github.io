@@ -1,0 +1,346 @@
+---
+title: "SongmeterAnalysis"
+author: "Emily"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+summary: "This is analysis of acoustic environment at nests"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(data.table)
+library(multcomp)
+library(ggplot2)
+library(ggrepel)
+```
+
+###Run SongmeterDataInput.R first
+
+
+```{r include=FALSE}
+
+#Set directory:
+workingdir <- c("/Users/ehudson/Google Drive/My Drive/fka_Dropbox/SongmeterProj/")
+
+
+wcsppbs=read.csv(paste0(workingdir,"wcsppbs.csv"),na.string="#N/A")
+gcsppbs=read.csv(paste0(workingdir,"gcsppbs.csv"),na.string="#N/A")
+allnestprops=read.csv(paste0(workingdir,"WCSPproportions1.csv"),na.string="#N/A")
+```
+```{r include=FALSE}
+wcsppbs_all=read.csv(paste0(workingdir,"wcsppbs_all.csv"))
+gcsppbs_all=read.csv(paste0(workingdir,"gcsppbs_all.csv"))
+nesttotals=read.csv(paste0(workingdir,"TotalSongsPerNest.csv"))
+nestrespdiff=read.csv(paste0(workingdir,"NestRespDiffs.csv"))
+```
+```{r include=FALSE}
+nestcols = rainbow(length(unique(wcsppbs$Nest.number)))
+nestnum = length(unique(wcsppbs$Nest.number))
+```
+```{r include=FALSE}
+## Add nestling sex
+nestsex = read.csv(paste0(workingdir,"HAPANestlPlayback_complete2.csv"),colClasses = "character", na.string="#N/A")
+
+nestsex = nestsex[nestsex$use != "no",]
+nestsex = nestsex[nestsex$Species != "Other",]
+nestsex = nestsex[nestsex$Sex != "",]
+nestsex = nestsex[nestsex$Year == "2017",]
+#nestsex$Sex <- na.omit(nestsex)
+gcsppbs$Sex <- nestsex$Sex[match(gcsppbs$Chick, nestsex$Chick)]
+gcsppbs <- gcsppbs[!is.na(gcsppbs$Sex),]
+gcsppbs$Sex <- as.factor(gcsppbs$Sex)
+gcsppbs$WCrate <-nesttotals$WCrate[match(gcsppbs$Nest.number,nesttotals$Nest)]
+gcsppbs$GCrate <-nesttotals$GCrate[match(gcsppbs$Nest.number,nesttotals$Nest)]
+
+wcsppbs$Sex <- nestsex$Sex[match(wcsppbs$Chick, nestsex$Chick)]
+wcsppbs <- wcsppbs[!is.na(wcsppbs$Sex),]
+```
+```{r include=FALSE}
+#This filters out 1746:
+#wcsppbs <- wcsppbs[!is.na(wcsppbs$Sex),]
+
+wcsppbs$Sex <- as.factor(wcsppbs$Sex)
+wcsppbs$WCrate <- nesttotals$WCrate[match(wcsppbs$Nest.number,nesttotals$Nest)]
+wcsppbs$GCrate <- nesttotals$GCrate[match(wcsppbs$Nest.number,nesttotals$Nest)]
+
+wcsppbs$condition <- as.numeric(as.character(wcsppbs$mass))/as.numeric(as.character(wcsppbs$tarsus))
+gcsppbs$condition <- as.numeric(as.character(gcsppbs$mass))/as.numeric(as.character(gcsppbs$tarsus))
+
+
+wcsppbs$ChirpGC <- gcsppbs$Track[match(wcsppbs$Nest.number, gcsppbs$Nest.number)]
+wcsppbs$Chirpdiff <- wcsppbs$ChirpGC-wcsppbs$Track
+wcsppbs$Chirpprop <-  wcsppbs$Track/wcsppbs$ChirpGC
+
+wcsppbs$Chirpprop <- replace(wcsppbs$Chirpprop,wcsppbs$Chirpprop=="Inf","0") #When no chirps to WC, chirpprop is zero
+
+#And without excluding nonresponders:
+gcsppbs_all$Sex <- nestsex$Sex[match(gcsppbs_all$Chick, nestsex$Chick)]
+gcsppbs_all <- gcsppbs_all[!is.na(gcsppbs_all$Sex),]
+gcsppbs_all$Sex <- as.factor(gcsppbs_all$Sex)
+wcsppbs_all$Sex <- nestsex$Sex[match(wcsppbs_all$Chick, nestsex$Chick)]
+wcsppbs_all <- wcsppbs_all[!is.na(wcsppbs_all$Sex),]
+wcsppbs_all$Sex <- as.factor(wcsppbs_all$Sex)
+```
+```{r include=FALSE}
+nestmeans<-aggregate(Track~Nest.number,mean,data=wcsppbs)
+
+nestmeans$Nest.number<-factor(nestmeans$Nest.number)
+gcsppbs1 <- as.data.frame(gcsppbs[,c("band.number","Nest.number","Clutch","Pre","Track","Feather","WCSPprop","Sex","WCrate","GCrate","condition","mass")])
+gcsppbs1$pb <- "GCSP"
+wcsppbs1<-as.data.frame(wcsppbs[,c("band.number","Nest.number","Clutch","Pre","Track","Feather","WCSPprop","Sex","WCrate","GCrate","condition","mass")])
+wcsppbs1$Feather <- as.numeric(as.character(wcsppbs1$Feather))
+wcsppbs1$pb <- "WCSP"
+allpbs <- rbind(wcsppbs1,gcsppbs1) #feather messed up
+allpbsM <-droplevels(subset(allpbs,allpbs$Sex=="M"))
+allpbsF <-droplevels(subset(allpbs,allpbs$Sex=="F"))
+nestprops <- as.data.frame(nestrespdiff)
+nestprops$Exp <- allnestprops$WCSPprop[match(nestprops$Nest,allnestprops$Nest)]
+nestprops$WCRespAvg <- nestmeans$Track[match(nestprops$Nest,nestmeans$Nest.number)]
+
+```
+```{r include=FALSE}
+nestmeans$WCSPprop<-aggregate(WCSPprop~Nest.number,max,data=wcsppbs)$WCSPprop
+nestmeans$Clutch <- aggregate(Clutch~Nest.number,mean,data=wcsppbs)$Clutch
+
+##With proportion of responses to WCSP/total as response
+
+nestprops <- as.data.frame(nestrespdiff)
+nestprops$Exp <- allnestprops$WCSPprop[match(nestprops$Nest,allnestprops$Nest)]
+summary(lm(nestprops$RespProp~nestprops$Exp))
+plot(nestprops$RespProp~nestprops$Exp)
+
+summary(lm(nestprops$RespDiff~nestprops$Exp))
+plot(nestprops$RespDiff~nestprops$Exp)
+#nestprops$WCRespAvg <- nestmeans$Track[match(nestprops$Nest,nestmeans$Nest.number)] 
+
+nestmeans_all<-aggregate(Track~Nest.number,mean,data=wcsppbs_all)
+
+nestmeans_all$Nest.number<-factor(nestmeans_all$Nest.number)
+
+nestmeans_all$WCSPprop<-aggregate(WCSPprop~Nest.number,max,data=wcsppbs_all)$WCSPprop
+nestmeans_all$Clutch <- aggregate(Clutch~Nest.number,mean,data=wcsppbs_all)$Clutch
+```
+```{r include=FALSE}
+
+#nestmeans<-aggregate(Response~Nest.number,mean,data=wcsppbs)
+nestmeans$Nest.number<-factor(nestmeans$Nest.number)
+
+nestmeans$WCSPprop<-aggregate(WCSPprop~Nest.number,max,data=wcsppbs)$WCSPprop
+
+#add condition column 
+wcsppbs$condition <- as.numeric(wcsppbs$mass)/as.numeric(wcsppbs$tarsus)
+gcsppbs$condition <- as.numeric(gcsppbs$mass)/as.numeric(gcsppbs$tarsus)
+
+```
+
+
+
+```{r echo=FALSE}
+# Make separate male and female dataframe
+gcsppbsM <- subset(gcsppbs, gcsppbs$Sex=="M")
+gcsppbsF <- subset(gcsppbs, gcsppbs$Sex=="F")
+wcsppbsM <- subset(wcsppbs, wcsppbs$Sex=="M")
+wcsppbsF <- subset(wcsppbs, wcsppbs$Sex=="F")
+nestmeans_no40 <- nestmeans_all[-c(17),]
+nestmeans <- nestmeans_no40
+```
+```{r echo=FALSE}
+ggplot(data=nestmeans_all,aes(x=jitter(WCSPprop),y=Track,col=Nest.number,label=Nest.number))+geom_point(aes(fill=Nest.number))+geom_text_repel()+labs(title="without excluding nonresponders")
+write.csv(nestmeans,"NestMeans.csv")
+write.csv(allpbs,"All2017PBdata.csv")
+ggsave("New_nests_all.png")
+
+
+```
+```{r echo=FALSE}
+g1<-ggplot(data=nestmeans_all,aes(x=jitter(WCSPprop),y=Track))+geom_point(fill="grey",shape=21,size=3,stroke=1)+labs(x="Proportion of white-crowned sparrow song \n relative to total Zonotrichia song ", y="Average nest-wide response to  \n white-crowned sparrow playback",size=10)#without excluding nonresponders
+g1+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA),
+    axis.line = element_line(colour = "black"),
+  axis.text=element_text(size=12)
+)
+anova(lm(nestmeans_all$WCSPprop~nestmeans_all$Track))
+ggsave("New_nests_all_grey.png")
+
+
+```
+```{r echo=FALSE}
+g1<-ggplot(data=nestmeans,aes(x=jitter(WCSPprop),y=Track))+geom_point(fill="grey",shape=21,size=3,stroke=1)+labs(x="Proportion of white-crowned sparrow song \n relative to total Zonotrichia song ", y="Average nest-wide response to  \n white-crowned sparrow playback",size=10) #excluding nest 40
+g1+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA),
+    axis.line = element_line(colour = "black"),
+  axis.text=element_text(size=12)
+)
+anova(lm(nestmeans$WCSPprop~nestmeans$Track))
+ggsave("New_nests_no40_grey.png")
+```
+```{r echo=FALSE}
+nestmeans_few <- subset(nestmeans_all,nestmeans_all$Nest.number != 1740)
+nestmeans_few <- droplevels(subset(nestmeans_few,nestmeans_few$Nest.number != 1733))
+write.csv(nestmeans_few,"FinalNestMeans.csv")
+summary(lm(nestmeans_few$Track~nestmeans_few$WCSPprop))
+
+table(nestmeans_few$Nest.number)
+
+summary(lm(nestmeans$Track~nestmeans$WCSPprop))
+```
+```{r echo=FALSE}
+summary(lm(nestmeans$Track~nestmeans$WCSPprop))
+
+```
+
+##1. Analyzing all data, with playback type, pre-track response, sex and feather length as covariates. 
+
+
+
+```{r echo=FALSE}
+library(MuMIn)
+
+
+
+print("No interaction, then with playback*WCproportion and playback*Sex interactions.")
+lm1 <- lm(Track~pb+WCSPprop+Pre+Sex+as.numeric(Feather),data=allpbs)
+lmred<- lm(Track~pb+WCSPprop+Pre+as.numeric(Feather),data=allpbs)
+anova(lm1,lmred)
+summary(lm1)
+lm2 <- lm(Track~pb*WCSPprop+Pre+Sex+as.numeric(Feather),data=allpbs)
+lm2red <- lm(Track~Pre+Sex+as.numeric(Feather),data=allpbs)
+anova(lm2,lm2red)
+summary(lm2)
+
+lm3 <- lm(Track~pb*Sex+Pre+WCSPprop+as.numeric(Feather),data=allpbs)
+lm3red <- lm(Track~Pre+WCSPprop+as.numeric(Feather),data=allpbs)
+anova(lm3,lm3red)
+summary(lm3)
+
+
+allpbs <- subset(allpbs,allpbs$Sex!="NA")
+allpbs$figtrt <- as.factor(paste(allpbs$Sex,allpbs$pb,sep = ""))
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+```
+
+Including clutch size; WC proportion now drops to p=0.051.
+
+```{r echo=FALSE}
+lm4 <- lm(Track~pb+Clutch+Sex+Pre+WCSPprop+as.numeric(Feather),data=allpbs)
+summary(lm4)
+allpbs <- subset(allpbs,allpbs$Sex!="NA")
+allpbs$figtrt <- as.factor(paste(allpbs$Sex,allpbs$pb,sep = ""))
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+levels(allpbs$figtrt) <- c("Female Nestlings GC playback","Female Nestlings WC playback","Male Nestlings GC playback","Male Nestlings WC playback")
+
+fig1d <- ggplot(data=allpbs,aes(y=Track,x=WCSPprop,shape=figtrt,fill=figtrt),colour=figtrt)+geom_point()+geom_smooth(method=lm, se=FALSE, fullrange=TRUE,aes(col=figtrt))+scale_shape_manual(values=c(21:24))+scale_color_manual(values=gg_color_hue(4))
+fig1d=fig1d+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA), # or element_blank
+  #panel.grid.minor = element_blank(), 
+  #panel.grid.major = element_blank(),
+  plot.background = element_rect(fill = "transparent",colour = NA)
+)
+fig1d
+ggsave("PropSexPBregression.png")
+```
+Including clutch size and pb*prop interaction
+
+```{r echo=FALSE}
+
+lm4 <- lm(Track~pb*WCSPprop+Pre+Sex+Clutch+as.numeric(Feather),data=allpbs)
+summary(lm4)
+lm4red <- lm(Track~pb+WCSPprop+Pre+Sex+Clutch+as.numeric(Feather),data=allpbs)
+anova(lm4,lm4red)
+summary(lm4red)
+allpbs <- subset(allpbs,allpbs$Sex!="NA")
+allpbs$figtrt <- as.factor(paste(allpbs$Sex,allpbs$pb,sep = ""))
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+```
+Interaction between sex and proportion (splitting up data into GC and WC trials). Since this experiment isn't really about species recognition, I think it's appropriate to focus on each species response separately from now on.
+
+```{r echo=FALSE}
+
+GC_sex_mod <- lm(Track~WCSPprop*Sex+as.numeric(Feather),data=gcsppbs)  
+summary(GC_sex_mod)
+
+GC_sexplus_mod <- lm(Track~WCSPprop*Sex+Clutch+Pre+as.numeric(Feather),data=gcsppbs)  
+summary(GC_sexplus_mod)
+
+fig2a <- ggplot(data=gcsppbs,aes(y=Track,x=WCSPprop,shape=Sex,fill=Sex),colour=Sex)+geom_point()+geom_smooth(method=lm, se=FALSE, fullrange=TRUE,aes(col=Sex))+scale_shape_manual(values=c(21:24))
+fig2a=fig2a+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA)
+)
+fig2a+labs(y="Response to GCSP")
+```
+
+```{r echo=FALSE}
+WC_sex_mod <- lm(Track~WCSPprop*Sex+as.numeric(Feather),data=wcsppbs) 
+summary(WC_sex_mod)
+fig2b <- ggplot(data=wcsppbs,aes(y=Track,x=WCSPprop,shape=Sex,fill=Sex),colour=Sex)+geom_point()+geom_smooth(method=lm, se=FALSE, fullrange=TRUE,aes(col=Sex))+scale_shape_manual(values=c(21:24))
+fig2b=fig2b+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA)
+)
+fig2b+labs(y="Response to WCSP")
+# GC_sex_clutch_mod <- lm(Track~WCSPprop*Sex+Pre+Clutch+as.numeric(Feather),data=gcsppbs)  
+# summary(GC_sex_clutch_mod)
+# WC_sex_clutch_mod <- lm(Track~WCSPprop*Sex+Pre+Clutch+as.numeric(Feather),data=wcsppbs) 
+# summary(WC_sex_clutch_mod)
+```
+
+How about splitting into males and females?
+
+```{r echo=FALSE}
+malemod <- lm(Track~pb+Pre+WCSPprop+as.numeric(Feather), data=allpbsM)
+summary(malemod)
+
+malemod1 <- lm(Track~pb*WCSPprop+Pre+as.numeric(Feather), data=allpbsM)
+summary(malemod1)
+
+fig3a <- ggplot(data=allpbsM,aes(y=Track,x=WCSPprop,shape=pb,fill=pb),colour=pb)+geom_point()+geom_smooth(method=lm, se=FALSE, fullrange=TRUE,aes(col=pb))+scale_shape_manual(values=c(21:24))
+fig3a=fig3a+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA)
+)
+fig3a+labs(y="Male responses by exposure")
+ggsave("MaleResponses.png")
+
+femalemod <- lm(Track~pb+Pre+WCSPprop+as.numeric(Feather), data=allpbsF)
+summary(femalemod)
+femalemod1 <- lm(Track~pb*WCSPprop+Pre+as.numeric(Feather), data=allpbsF)
+summary(femalemod1)
+fig3b <- ggplot(data=allpbsF,aes(y=Track,x=WCSPprop,shape=pb,fill=pb),colour=pb)+geom_point()+geom_smooth(method=lm, se=FALSE, fullrange=TRUE,aes(col=pb))+scale_shape_manual(values=c(21:24))
+fig3b=fig3b+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA)
+)
+fig3b+labs(y="Female responses by exposure")
+ggsave("FemaleResponses.png")
+```
+### Analysis of 2017 WCSP nests
+```{r echo=FALSE}
+wcnestdata <- read.csv(paste0(workingdir,"2017_NestlingPBs_WConly.csv"))
+
+colnames(wcnestdata)<- c("band.number","date","time","Species","Nest.number","Feather","pb","Pre","Track","Post","Ctrl","ctrl.pre","ctrl.track","ctrl.post","notes")
+wcnestdata$pb <- as.character(wcnestdata$pb)
+wcnestdata[grep("WC*",wcnestdata$pb),]$pb<-"WC"
+wcnestdata[grep("GC*",wcnestdata$pb),]$pb<-"GC"
+
+fig4 =ggplot(data=wcnestdata,aes(y=Track,x=pb,fill=as.factor(Nest.number)))+geom_point(shape=21)
+fig4=fig4+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA)
+)
+fig4+labs(y="WCSP nestlings")
+
+```
