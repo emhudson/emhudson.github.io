@@ -36,4 +36,6 @@ summary(Orange)
 ## Warning: package 'ggplot2' was built under R version 3.6.2
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
+
