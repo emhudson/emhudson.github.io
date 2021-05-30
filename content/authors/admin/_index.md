@@ -15,9 +15,7 @@ interests:
 - Evolution of Behavior
 - Bird Culture
 - Using data for conservation
-organizations:
-- name: Not Stanford University
-  url: https://www.stanford.edu/
+
 role: evolutionary biologist and data noob
 social:
 - icon: envelope
@@ -28,13 +26,13 @@ social:
   icon: twitter
   icon_pack: fab
   label: Follow me on Twitter
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/zononotes
 - icon: graduation-cap
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.com/citations?user=aeKQCqoAAAAJ&hl=en
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/emhudson
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/
