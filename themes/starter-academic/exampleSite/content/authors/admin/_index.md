@@ -1,39 +1,26 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Emily J. Hudson
 
 # Is this the primary user of the site?
 superuser: true
 
-# Role/position/tagline
-role: Professor of Artificial Intelligence
-
-# Organizations/Affiliations to show in About widget
-organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
-
-# Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
-
-# Interests to show in About widget
-interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
-
-# Education to show in About widget
-education:
+#education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
+  - course: PhD in Biological Sciences (Ecology, Evolution & Behavior concentration)
+    institution: University of Nebraska - Lincoln
+    year: 2018
+  - course: BA in Cognitive Science
+    institution: Vassar College
     year: 2008
+email: ""
+highlight_name: false
+interests:
+- Evolution of Behavior
+- Bird Culture
+- Using data for conservation
+
+role: evolutionary biologist and data noob
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons

@@ -13,12 +13,16 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, echo=F}
 library(leaflet,RColorBrewer)
 
+substrRight <- function(x, n){
+  substr(x, nchar(x)-n+1, nchar(x))
+}
 
-dat=read.csv("~/Google Drive/My Drive/fka_Dropbox/Landcheck/alllandwatchcrithab_2021-05-26.csv")
-data_date <- "2021-05-26"
+pathtofile <- "~/Google Drive/My Drive/fka_Dropbox/Landcheck/alllandwatchcrithab_2021-05-26.csv"
+dat=read.csv(pathtofile)
+data_date <- substr(substrRight(pathtofile,14),1,10)
+
 
 badcolnames <- colnames(dat)
-
 goodcolnames <- c(badcolnames[2:(ncol(dat)-1)],"longitude","latitude")
 
 colnames(dat) <- goodcolnames
@@ -30,6 +34,14 @@ dat <- dat[dat$price>1000,]
 dat$logacreprice <- log(dat$acreprice)
 
 ```
+## 
+
+<font size = "1">Image license:
+<a href="https://www.flickr.com/people/91008793@N00"> bobistraveling </a>, <a href = "https://commons.wikimedia.org/wiki/File:Forest_-_longleaf_pines_Weymouth_Woods_SP_1805_ (5606645307) _ (2).jpg "> Forest - longleaf pines Weymouth Woods SP 1805 (5606645307) (2) </a>, <a href =" https://creativecommons.org/licenses/by/2.0/legalcode "rel =" license "> CC BY 2.0 </a></font>
+
+<font size = "3"> This map shows undeveloped land in the US listed for sale on landwatch.com. For now, I have filtered it to listings for >100 acres that occur in the ranges of IUCN designated endangered species. </font>
+
+##
 
 ```{r, echo=F, fig.width=14, fig.height=12, fig.align='center'}
 #pricepal <- colorRampPalette(brewer.pal(7,"Greens"))(100)
