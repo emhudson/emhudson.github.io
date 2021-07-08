@@ -14,8 +14,10 @@ interests:
 - Evolution of Behavior
 - Bird Culture
 - Using data for conservation
+- Levelling up in Python 
 
-role: evolutionary biologist and data noob
+
+role: evolutionary biologist and data fanatic
 social:
 - icon: envelope
   icon_pack: fas
@@ -39,8 +41,10 @@ superuser: true
 title: Emily J. Hudson
 ---
 
-Emily made this site! Sometimes (not often enough) a bird is on her head.
+Hello, Emily here! I am a behavioral ecologist by training, an R-based data wrangler by necessity, and a storyteller at heart. Check out some of my work below!
 
-Beep beep boop.
+When I'm not at my laptop, I might be gardening, watching birds, climbing rocks, sewing, or appreciating cute dogs. 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/EJHResumeJune2021.pdf" "newtab" >}}resumé{{< /staticref >}}.
+
+This website is a work-in-progress as I migrate from Google Sites. Pardon the dust! 

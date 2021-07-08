@@ -4,6 +4,9 @@ author: "Emily"
 date: "5/26/2021"
 output: html_document
 summary: "Land over 100 acres for sale in endangered species habitats"
+tags:
+- R
+- GIS
 ---
 
 ```{r setup, include=FALSE}
@@ -37,7 +40,7 @@ dat$logacreprice <- log(dat$acreprice)
 ## 
 
 <font size = "1">Image license:
-<a href="https://www.flickr.com/people/91008793@N00"> bobistraveling </a>, <a href = "https://commons.wikimedia.org/wiki/File:Forest_-_longleaf_pines_Weymouth_Woods_SP_1805_ (5606645307) _ (2).jpg "> Forest - longleaf pines Weymouth Woods SP 1805 (5606645307) (2) </a>, <a href =" https://creativecommons.org/licenses/by/2.0/legalcode "rel =" license "> CC BY 2.0 </a></font>
+<a href="https://commons.wikimedia.org/wiki/User:Famartin"> Famartin </a>, <a href = "https://commons.wikimedia.org/wiki/File:2014-06-28_11_25_56_Big_sagebrush_on_the_northwestern_slopes_of_Twin_Peaks_near_Elko,_Nevada.JPG "> 2014-06-28 11 25 56 Big sagebrush on the northwestern slopes of Twin Peaks near Elko, Nevada </a>, <a href=" https://commons.org .commons.org -sa / 3.0 / legalcode "rel =" license "> CC BY-SA 3.0 </a></font>
 
 <font size = "3"> This map shows undeveloped land in the US listed for sale on landwatch.com. For now, I have filtered it to listings for >100 acres that occur in the ranges of IUCN designated endangered species. </font>
 

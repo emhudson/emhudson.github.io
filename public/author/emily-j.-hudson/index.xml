@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emily J. Hudson</title>
+    <link>http://example.org/author/emily-j.-hudson/</link>
+      <atom:link href="http://example.org/author/emily-j.-hudson/index.xml" rel="self" type="application/rss+xml" />
+    <description>Emily J. Hudson</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>http://example.org/author/emily-j.-hudson/avatar_hubb3e307997cdec075ccc12f9f4c80754_139917_270x270_fill_q75_lanczos_center.jpg</url>
+      <title>Emily J. Hudson</title>
+      <link>http://example.org/author/emily-j.-hudson/</link>
+    </image>
+    
+  </channel>
+</rss>
