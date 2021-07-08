@@ -15,10 +15,10 @@ tags:
 
 <div id="generating-kde-based-range-maps-from-observance-data" class="section level2">
 <h2>Generating kde-based range maps from observance data</h2>
-<p>As part of a project with Megan Mitchell and Nicole Creanza, I used BigQuery on the Google Cloud platform to compile sighting records of 42 species of in the Passerellidae family of sparrows. Our goal was to estimate the degree of range overlap for each pair of sister species; we wanted the range to be restricted to breeding season, where applicable, and comparable across species with orders of magnitude differences in number of recorded sightings. For most North American sparrows, thousands of records were compiled on eBird.</p>
+<p>As part of a project with Megan Mitchell and <a href="https://as.vanderbilt.edu/biosci/bio/nicole-creanza">Nicole Creanza</a>, I used BigQuery on the Google Cloud platform to compile sighting records of 42 species of in the Passerellidae family of sparrows. Our goal was to estimate the degree of range overlap for each pair of sister species; we wanted the range to be restricted to breeding season, where applicable, and comparable across species with orders of magnitude differences in number of recorded sightings. For most North American sparrows, thousands of records were compiled on eBird.</p>
 <div class="figure">
 <img src="exampleBigQuery.png" alt="" />
-<p class="caption">An example query of the complete eBird records dataset for one species (Worthen’s sparrow).</p>
+<p class="caption">An example query of the complete eBird records dataset for one species (Worthen’s sparrow) on the Google Cloud platform.</p>
 </div>
 <p>Below are an example of some basic range maps I generated using different density estimations from one sister species pair.</p>
 <div class="figure">
@@ -31,7 +31,6 @@ tags:
 <p>Ultimately, we decided to take advantage of the <a href="https://registry.opendata.aws/ebirdst/">eBird Status and Trends dataset</a>, which combines eBird reports with satellite images and statistical models to predict species occupancy every week of the year.</p>
 <div class="figure">
 <img src="Pooecetes%20gramineus_Artemisiospiza%20belli.png" alt="" />
-<p class="caption">The same species pair as above, shown with breeding season data from eBird Status and Trends.</p>
+<p class="caption">The same species pair as above, shown with breeding season data from eBird Status and Trends. Figure taken with permission from Mitchell, Hudson and Creanza (in prep).</p>
 </div>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </div>
