@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emily J Hudson | Emily J. Hudson</title>
+    <link>http://example.org/author/emily-j-hudson/</link>
+      <atom:link href="http://example.org/author/emily-j-hudson/index.xml" rel="self" type="application/rss+xml" />
+    <description>Emily J Hudson</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
+      <title>Emily J Hudson</title>
+      <link>http://example.org/author/emily-j-hudson/</link>
+    </image>
+    
+    <item>
+      <title>Ornament, armament, or toolkit? Modelling how population size drives the evolution of birdsong, a functional cultural trait</title>
+      <link>http://example.org/publication/hudson-2021-ornament/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hudson-2021-ornament/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The role of nestling acoustic experience in song discrimination in a sparrow</title>
+      <link>http://example.org/publication/hudson-2020-role/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hudson-2020-role/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>To accept or reject heterospecific mates: behavioural decisions underlying premating isolation</title>
+      <link>http://example.org/publication/shizuka-2020-accept/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/shizuka-2020-accept/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introductory whistle is sufficient for early song recognition by golden-crowned sparrow nestlings</title>
+      <link>http://example.org/publication/hudson-2017-introductory/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hudson-2017-introductory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pervasive reinforcement and the role of sexual selection in biological speciation</title>
+      <link>http://example.org/publication/hudson-2014-pervasive/</link>
+      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hudson-2014-pervasive/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

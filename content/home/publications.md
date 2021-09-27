@@ -34,7 +34,7 @@ design:
   #   2 = Compact
   #   3 = Card
   #   4 = Citation (publication only)
-  view: 4
+  view: 2
 ---
 
 See my latest publications on <a href="https://scholar.google.com/citations?user=aeKQCqoAAAAJ&hl=en">Google Scholar</a>

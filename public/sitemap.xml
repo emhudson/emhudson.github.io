@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://example.org/</loc>
-    <lastmod>2021-07-07T16:56:49-05:00</lastmod>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
     <loc>http://example.org/post/2021-07-07-hello-world/</loc>
     <lastmod>2021-07-07T16:56:49-05:00</lastmod>
@@ -11,9 +11,130 @@
     <loc>http://example.org/post/</loc>
     <lastmod>2021-07-07T16:56:49-05:00</lastmod>
   </url><url>
-    <loc>http://example.org/admin/</loc>
+    <loc>http://example.org/publication-type/3/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
     <loc>http://example.org/authors/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/emily-j-hudson/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/nicole-creanza/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/hudson-2021-ornament/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication_types/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication-type/2/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/acceptance-threshold/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/avian/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/daizaburo-shizuka/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/hybridization/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/learning/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/partial-reproductive-isolation/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/recognition/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/recognition-systems/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/song/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/speciation/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/species-recognition/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/hudson-2020-role/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/shizuka-2020-accept/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/zonotrichia-atricapilla/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/cultural-evolution/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/emily-jane-hudson/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/matthew-hahn/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/hudson-2019-nestling/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/song-dialects/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/zonotrichia/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/acoustic-template/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/hudson-2017-introductory/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/song-learning/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/whistles/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/birds/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/hybrid-zones/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/hudson-2014-pervasive/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/postmating-isolation/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/premating-isolation/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/reinforcement/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/sexual-selection/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/trevor-d-price/</loc>
+    <lastmod>2021-09-27T17:29:14-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/admin/</loc>
   </url><url>
     <loc>http://example.org/categories/</loc>
   </url><url>
@@ -25,8 +146,6 @@
   </url><url>
     <loc>http://example.org/project/</loc>
   </url><url>
-    <loc>http://example.org/publication_types/</loc>
-  </url><url>
     <loc>http://example.org/tag/r/</loc>
   </url><url>
     <loc>http://example.org/project/rangemap-project/</loc>
@@ -35,10 +154,6 @@
   </url><url>
     <loc>http://example.org/tag/sql/</loc>
   </url><url>
-    <loc>http://example.org/tags/</loc>
-  </url><url>
     <loc>http://example.org/tag/tidyverse/</loc>
-  </url><url>
-    <loc>http://example.org/author/%E5%90%B3%E6%81%A9%E9%81%94/</loc>
   </url>
 </urlset>
