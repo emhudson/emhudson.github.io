@@ -14,7 +14,7 @@ interests:
 - Evolution of Behavior
 - Bird Culture
 - Using data for conservation
-- Learning new languages
+- Machine learning
 - Data visualization
 
 
@@ -22,7 +22,7 @@ role: evolutionary biologist and data fanatic
 social:
 - icon: envelope
   icon_pack: fas
-  link: /#contact
+  link: mailto:emily.jane.hudson@gmail.com
 - display:
     header: true
   icon: twitter
@@ -37,7 +37,7 @@ social:
   link: https://github.com/emhudson
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://www.linkedin.com/in/ejhudson1/
 superuser: true
 title: Emily J. Hudson
 ---
