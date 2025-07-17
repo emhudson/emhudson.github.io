@@ -30,11 +30,11 @@ tags:
 
 # Media Mix Model Example
 
-I put this simple demonstration of a media mix modeling strategy together in R to document my process teaching myself this technique. It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools.
+I put together this simple demonstration of a media mix modeling strategy in R to document my process teaching myself this technique. It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools (`ggplot` and `plotly`).
 
 ## Load data
 
-I will use a sample dataset "marketing" from the R package `datarium`. This dataset contains 200 weeks of sales data and marketing spends (in £1000 units) for youtube, facebook and and newspaper channels.
+I will use a sample dataset "marketing" from the R package `datarium`. This simulated dataset contains 200 weeks of sales data and marketing spends (in $1000 units) for youtube, facebook and and newspaper channels.
 
 ```{r}
 data(marketing)
@@ -318,3 +318,9 @@ paste0("Cost of increased Facebook spend: $",round((sim_realloc$fb_spend %>% sum
 ```
 
 So, this doesn't seem like a good ROI based on this simple simulation. A more realistic next step would be to include a capped budget and include the savings of reallocating, for example, all newspaper budget to Facebook and YouTube.
+
+### References 
+
+https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/
+
+https://CRAN.R-project.org/package=datarium
