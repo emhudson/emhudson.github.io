@@ -21,13 +21,6 @@ tags:
 
     ```
 
-<style type="text/css">
-  body{
-  font-size: 14pt;
-}
-</style>
-
-
 # Media Mix Model Example
 
 I put together this simple demonstration of a media mix modeling strategy in R to document my process teaching myself this technique. It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools (`ggplot` and `plotly`).
