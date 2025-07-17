@@ -1,0 +1,318 @@
+---
+title: "Media Mix Demo"
+author: "Emily Hudson"
+date: "2025-07-16"
+output: html_document
+---
+<style type="text/css">
+  body{
+  font-size: 14pt;
+}
+</style>
+
+
+    ```{r setup, include=FALSE}
+    knitr::opts_chunk$set(echo = TRUE)
+    library(datarium)
+    library(PerformanceAnalytics)
+    library(mctest)
+    library(lmtest) #or car
+    library(forecast)
+    library(ggfortify)
+    library(glmnet)
+    library(dplyr)
+    library(plotly)
+
+    ```
+
+
+# Media Mix Model Example
+
+I put this simple demonstration of a media mix modeling strategy together in R to document my process teaching myself this technique. It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools.
+
+## Load data
+
+I will use a sample dataset "marketing" from the R package `datarium`. This dataset contains 200 weeks of sales data and marketing spends (in £1000 units) for youtube, facebook and and newspaper channels.
+
+```{r}
+data(marketing)
+df_sample <- marketing
+#View(df_sample)
+
+chart.Correlation(df_sample, histogram = TRUE, pch = 19)
+```
+
+At first glance, youtube and facebook ad budgets seem to be correlated with sales; newspaper spend shows less of a clear relationship.
+
+## Adstock adjustment
+
+Because advertising may affect a customer's behavior for an extended period after exposure, we will adjust the spend amounts per week to include additional amounts from the previous two weeks (adstock). The exact decay rates vary depending on the medium and other factors; here I will use rates of 10%, 15% and 25% for facebook, youtube and newspaper, respectively. All will have a "memory" of two weeks.
+
+```{r, echo=FALSE}
+#set adstock fb rate
+
+set_memory <- 2
+
+set_rate_fb <- 0.1
+get_adstock_fb <- rep(set_rate_fb, set_memory+1) ^ c(0:set_memory)
+#adstocked fb
+
+#The "filter" function is very confusingly named -- it gets an adjusted value (in this case, spend) by looking back two steps, and discounting that spend amount by the rate specified. That's why you need to add two empty timesteps at the beginning of the series. 
+
+ads_fb <- stats::filter(c(rep(0, set_memory), df_sample$facebook), get_adstock_fb, method="convolution") %>% na.omit()
+
+#set adstock youtube rate
+set_rate_yt <- 0.15
+get_adstock_youtube <- rep(set_rate_yt, set_memory+1) ^ c(0:set_memory)
+ads_youtube <- stats::filter(c(rep(0, set_memory), df_sample$youtube), get_adstock_youtube, method="convolution") %>% na.omit()
+
+#set adstock news rate
+set_rate_news <- 0.25
+get_adstock_news <- rep(set_rate_news, set_memory+1) ^ c(0:set_memory)
+ads_news <- stats::filter(c(rep(0, set_memory), df_sample$newspaper), get_adstock_news, method="convolution") %>% na.omit()
+
+```
+
+The adstocked values are our new predictors (better than raw spend). We are specifying sales as the dependent variable in the lm() function
+
+```{r}
+mmm_1 <- lm(df_sample$sales ~ ads_youtube + ads_fb + ads_news)
+summary(mmm_1)
+
+```
+
+There was a small but significant pearson correlation between newspaper and facebook ads in the raw data. Multicolinearity could make it hard to interpret the results, so let's check for it with a Variance Inflation Factors test:
+
+```{r}
+
+imcdiag(mmm_1, method = "VIF")
+```
+
+Fortunately none is detected. Checking for bias and heteroscedacity:
+
+```{r}
+par(mfrow = c(2,2))
+plot(mmm_1)
+```
+
+Based on these residuals vs fitted value plots, the residuals are possibly a little biased, but not heteroskedastic. The Breusch-Pagan test confirms this.
+
+```{r}
+
+lmtest::bptest(mmm_1)
+```
+
+## Add time series element
+
+\
+It's possible that cyclical seasonal effects (or an overall downward or upward trends) will have more influence on sales than marketing channels. To test this, first we need to add a timeseries variable (just 1:52 repeated over the length of the data, we don't need to map it to real dates for now). We can decompose this timeseries with the `decompose`function and see the effect of seasons and trend.
+
+```{r}
+
+## Add a time series column to investigate trend/seasonality
+ts_sales <- ts(df_sample$sales, start = 1, frequency = 52)
+ts_sales_comp <- decompose(ts_sales)
+plot(ts_sales_comp)
+
+
+
+```
+
+Are these factors significant? Let's fit another linear model with trend and season added.
+
+```{r}
+mmm_2 <- tslm(ts_sales ~ trend + season + ads_youtube + ads_fb + ads_news)
+summary(mmm_2)
+```
+
+A couple of weeks are significant in this model, while overall trend is not. However, for predictive purposes, having 50 coefficients in a model with questionable value seems unnecessary and like it could lead to overfitting and inflated standard errors. I want to use a regularization process to select only the important variables for prediction. I will do this using Lasso (least absolute shrinkage and selection operator)
+
+```{r}
+
+#Glmnet needs a matrix; convert the data above
+
+df_sample_lasso <- data.frame(df_sample) %>% 
+  dplyr::mutate(week = rep(1:52, length.out = 200))
+
+#Make the week a factor and scale the predictors
+df <- df_sample_lasso %>%
+  mutate(week = factor(week)) %>%
+  mutate(across(c(youtube,facebook,newspaper), scale))
+
+# We should also add trend -- just a continuously incrementing number, scaled
+df$trend <- 1:nrow(df)
+df$trend <- scale(df$trend) 
+
+X <- model.matrix(sales ~ads_youtube + ads_fb + ads_news + week + trend, data = df)[, -1]  # drop intercept
+y <- df$sales
+
+# Fit Lasso model: Lasso regression with 5-fold CV
+# this model isn't deterministic, so I'll set a seed to keep the results consistent
+set.seed(1)
+cvfit <- cv.glmnet(X, y, alpha = 1, standardize = FALSE)
+```
+
+```{r}
+# Best lambda
+best_lambda <- cvfit$lambda.min
+print(best_lambda)
+
+# Coefficients at best lambda
+coef(cvfit, s = best_lambda)
+```
+
+This shows us that all of the week dummy variables, as well as newspaper spend and trend, have zero coefficients, meaning they do not add predictive power to the model and can be dropped. "Lasso penalizes complexity—even weakly significant variables"
+
+```{r}
+# Get nonzero coefficient names (excluding intercept)
+lasso_coefs <- coef(cvfit, s = "lambda.min")
+selected_vars <- rownames(lasso_coefs)[which(lasso_coefs != 0)]
+selected_vars <- setdiff(selected_vars, "(Intercept)")  # exclude intercept
+print(selected_vars)
+```
+
+Now refit an lm with only the selected variables:
+
+```{r}
+
+formula_str <- paste("sales ~", paste(selected_vars, collapse = " + "))
+formula_ols <- as.formula(formula_str)
+
+# Use the same model matrix columns from df
+df_lm <- as.data.frame(X[, selected_vars, drop = FALSE])
+df_lm$sales <- y
+
+# Refit OLS
+ols_fit <- lm(formula_ols, data = df_lm)
+summary(ols_fit)
+```
+
+## Future predictions
+
+Because our model doesn't retain any seasonal or trend components as significant, the only factors predicting sales outcome are youtube and facebook spend. Let's project revenue in the future, adding some noise to weekly spend so as not to get an unrealistically flat line.
+
+```{r}
+
+fb_mean <- mean(df$facebook) 
+fb_sd   <- sd(df$facebook)
+yt_mean <- mean(df$youtube)
+yt_sd   <- sd(df$youtube)
+
+df_scaled <- df %>%
+  mutate(
+    fb_spend_scaled = (facebook - fb_mean) / fb_sd,
+    yt_spend_scaled = (youtube - yt_mean) / yt_sd
+  )
+
+X <- model.matrix(sales ~ fb_spend_scaled + yt_spend_scaled, data = df_scaled)[, -1]
+y <- df_scaled$sales
+
+cvfit <- cv.glmnet(X, y, alpha = 1, standardize = FALSE)
+
+# --- Step 2: Simulate 100 weeks of time-varying future spend ---
+
+n_future <- 100
+future_weeks <- (nrow(df) + 1):(nrow(df) + n_future)
+
+# Simulate using random draws from normal distributions
+set.seed(123)
+sim_base <- data.frame(
+  week = future_weeks,
+  fb_spend = rnorm(n_future, mean = fb_mean, sd = fb_sd),
+  yt_spend = rnorm(n_future, mean = yt_mean, sd = yt_sd),
+  scenario = "Forecast (Baseline Spend)"
+)
+
+# Reallocation: +50% facebook spend
+sim_realloc <- sim_base
+sim_realloc$fb_spend <- sim_realloc$fb_spend * 1.5
+sim_realloc$scenario <- "Forecast (+50% Facebook)"
+```
+Scale simulated data using historical scaling
+``` {r}
+scale_future <- function(data, fb_mean, fb_sd, yt_mean, yt_sd) {
+  data %>%
+    mutate(
+      fb_spend_scaled = (.data$fb_spend - fb_mean) / fb_sd,
+      yt_spend_scaled = (.data$yt_spend - yt_mean) / yt_sd
+    )
+}
+
+sim_base_scaled <- scale_future(data = sim_base, fb_mean, fb_sd, yt_mean, yt_sd)
+sim_realloc_scaled <- scale_future(data = sim_realloc, fb_mean, fb_sd, yt_mean, yt_sd)
+
+X_base <- model.matrix(~ fb_spend_scaled + yt_spend_scaled, data = sim_base_scaled)[, -1]
+X_realloc <- model.matrix(~ fb_spend_scaled + yt_spend_scaled, data = sim_realloc_scaled)[, -1]
+
+# --- Step 4: Predict sales using Lasso model ---
+
+sim_base$predicted_sales <- predict(cvfit, newx = X_base, s = "lambda.min")
+sim_realloc$predicted_sales <- predict(cvfit, newx = X_realloc, s = "lambda.min")
+
+# --- Step 5: Combine with historical data for plotting ---
+
+df$scenario <- "Actual"
+df$week <- 1:nrow(df)
+df$predicted_sales <- predict(cvfit, newx = X, s = "lambda.min")
+
+plot_data <- bind_rows(
+  df %>% select(week, predicted_sales, scenario),
+  sim_base %>% select(week, predicted_sales, scenario),
+  sim_realloc %>% select(week, predicted_sales, scenario)
+)
+```
+```{r, fig.width=11, fig.height=5, echo=FALSE}
+p <- ggplot(plot_data, aes(x = week, y = predicted_sales, color = scenario)) +
+  geom_line(lwd = 1.2) +
+  geom_vline(xintercept = nrow(df), linetype = "dashed", color = "gray40") +
+  labs(
+    title = "Sales Forecast with Time-Varying Spend Plans",
+    subtitle = "Baseline vs. +50% Facebook Increase",
+    x = "Week",
+    y = "Predicted Sales ($1k's)",
+    color = "Scenario"
+  ) +
+  theme_minimal() +
+  scale_color_manual(values = c(
+    "Actual" = "black",
+    "Forecast (Baseline Spend)" = "steelblue",
+    "Forecast (+50% Facebook)" = "firebrick"
+  ))
+
+
+p <- ggplot(plot_data, aes(x = week, y = predicted_sales, color = scenario)) +
+  geom_line(lwd = 0.5) +
+  geom_vline(xintercept = nrow(df), linetype = "dashed", color = "gray40") +
+  labs(
+    title = "Sales Forecast with Time-Varying Spend Plans",
+    subtitle = "Baseline vs. +50% Facebook Increase",
+    x = "Week",
+    y = "Predicted Sales",
+    color = "Scenario"
+  ) +
+  theme_minimal() +
+  scale_color_manual(values = c(
+    "Actual" = "black",
+    "Forecast (Baseline Spend)" = "steelblue",
+    "Forecast (+50% Facebook)" = "firebrick"
+  ))
+
+
+# Make it interactive
+ggplotly(p)
+```
+```{r, echo = FALSE}
+pred_sales_base = round(sim_base$predicted_sales %>% mean()*1000,2)
+print(paste0("Forecast sales with no Increase: $",pred_sales_base))
+
+pred_sales_realloc = round(sim_realloc$predicted_sales %>% mean()*1000,2)
+print(paste0("Forecast sales with +50% Facebook spend: $",pred_sales_realloc))
+
+print(paste0("Return on Increase: $", round(pred_sales_realloc-pred_sales_base,2)))
+```
+```{r, echo = FALSE}
+#Investment 
+paste0("Cost of increased Facebook spend: $",round((sim_realloc$fb_spend %>% sum() - sim_base$fb_spend %>% sum())*1000,2))
+```
+
+So, this doesn't seem like a good ROI based on this simple simulation. A more realistic next step would be to include a capped budget and include the savings of reallocating, for example, all newspaper budget to Facebook and YouTube.
