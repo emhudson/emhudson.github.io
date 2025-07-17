@@ -6,12 +6,6 @@ output: html_document
 tags:
 - R
 ---
-<style type="text/css">
-  body{
-  font-size: 14pt;
-}
-</style>
-
 
     ```{r setup, include=FALSE}
     knitr::opts_chunk$set(echo = TRUE)
@@ -26,6 +20,12 @@ tags:
     library(plotly)
 
     ```
+
+<style type="text/css">
+  body{
+  font-size: 14pt;
+}
+</style>
 
 
 # Media Mix Model Example
