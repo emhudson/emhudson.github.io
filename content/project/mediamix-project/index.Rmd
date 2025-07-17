@@ -1,8 +1,10 @@
 ---
 title: "Media Mix Demo"
-author: "Emily Hudson"
+author: "Emily"
 date: "2025-07-16"
 output: html_document
+tags:
+- R
 ---
 <style type="text/css">
   body{
