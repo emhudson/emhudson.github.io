@@ -3,7 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://example.org/</loc>
-    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/project/mediamix-project/</loc>
+    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/project/</loc>
+    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/r/</loc>
+    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/post/2021-07-07-hello-world/</loc>
     <lastmod>2021-07-07T16:56:49-05:00</lastmod>
@@ -66,9 +78,6 @@
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/species-recognition/</loc>
-    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tags/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/publication/hudson-2020-role/</loc>
@@ -143,10 +152,6 @@
     <loc>http://example.org/project/landmap-project/</loc>
   </url><url>
     <loc>http://example.org/tag/gis/</loc>
-  </url><url>
-    <loc>http://example.org/project/</loc>
-  </url><url>
-    <loc>http://example.org/tag/r/</loc>
   </url><url>
     <loc>http://example.org/project/rangemap-project/</loc>
   </url><url>
