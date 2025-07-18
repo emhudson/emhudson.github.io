@@ -1,5 +1,5 @@
 ---
-title: "Media Mix Demo"
+title: "Media Mix Modeling Demo"
 author: "Emily"
 date: "2025-07-16"
 output: html_document
@@ -21,7 +21,6 @@ tags:
 
     ```
 
-# Media Mix Model Example
 
 I put together this simple demonstration of a media mix modeling strategy in R to document my process teaching myself this technique. It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools (`ggplot` and `plotly`).
 
@@ -83,7 +82,7 @@ There was a small but significant pearson correlation between newspaper and face
 imcdiag(mmm_1, method = "VIF")
 ```
 
-Fortunately none is detected. Checking for bias and heteroscedacity:
+Fortunately no multicolinearity is detected. Checking for bias and heteroskedacity:
 
 ```{r}
 par(mfrow = c(2,2))
@@ -100,7 +99,7 @@ lmtest::bptest(mmm_1)
 ## Add time series element
 
 \
-It's possible that cyclical seasonal effects (or an overall downward or upward trends) will have more influence on sales than marketing channels. To test this, first we need to add a timeseries variable (just 1:52 repeated over the length of the data, we don't need to map it to real dates for now). We can decompose this timeseries with the `decompose`function and see the effect of seasons and trend.
+It's possible that cyclical seasonal effects (or an overall downward or upward trends) will have more influence on sales than marketing channels. To test this, first we need to add a timeseries variable (just 1:52 repeated over the length of the data; we don't need to map it to real dates for now). We can decompose this timeseries with the `decompose` function and see the effect of seasons and trend.
 
 ```{r}
 
@@ -122,7 +121,7 @@ summary(mmm_2)
 
 A couple of weeks are significant in this model, while overall trend is not. However, for predictive purposes, having 50 coefficients in a model with questionable value seems unnecessary and like it could lead to overfitting and inflated standard errors. I want to use a regularization process to select only the important variables for prediction. I will do this using Lasso (least absolute shrinkage and selection operator)
 
-```{r}
+```{r, echo = FALSE}
 
 #Glmnet needs a matrix; convert the data above
 

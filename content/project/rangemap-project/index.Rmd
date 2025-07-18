@@ -28,7 +28,7 @@ Below are an example of some basic range maps I generated using different densit
 
 ## eBird Status and Trends
 
-Ultimately, we decided to take advantage of the <a href="https://registry.opendata.aws/ebirdst/">eBird Status and Trends dataset</a>, which combines eBird reports with satellite images and statistical models to predict species occupancy every week of the year.
+Ultimately, we decided to take advantage of the <a href="https://science.ebird.org/en/status-and-trends">eBird Status and Trends dataset</a>, which combines eBird reports with satellite images and statistical models to predict species occupancy every week of the year.
 
 ![The same species pair as above, shown with breeding season data from eBird Status and Trends. Figure taken with permission from Mitchell, Hudson and Creanza (in prep).](Pooecetes gramineus_Artemisiospiza belli.png)
 
