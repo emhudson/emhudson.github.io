@@ -22,7 +22,9 @@ tags:
     ```
 
 
-I put together this simple demonstration of a media mix modeling strategy in R to document my process teaching myself this technique. It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools (`ggplot` and `plotly`).
+I put together this simple demonstration of a media mix modeling strategy in R to document my process teaching myself this technique.
+
+It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools (`ggplot` and `plotly`).
 
 ## Load data
 
@@ -155,7 +157,7 @@ print(best_lambda)
 coef(cvfit, s = best_lambda)
 ```
 
-This shows us that all of the week dummy variables, as well as newspaper spend and trend, have zero coefficients, meaning they do not add predictive power to the model and can be dropped. "Lasso penalizes complexity—even weakly significant variables"
+This shows us that all of the week dummy variables, as well as newspaper spend and trend, have zero coefficients, meaning they do not add predictive power to the model and can be dropped. Lasso penalizes complexity, removing even weakly significant variables if they don't aid prediction. 
 
 ```{r}
 # Get nonzero coefficient names (excluding intercept)
@@ -165,7 +167,7 @@ selected_vars <- setdiff(selected_vars, "(Intercept)")  # exclude intercept
 print(selected_vars)
 ```
 
-Now refit an lm with only the selected variables:
+Now refit an lm with only the selected variables, Facebook and Youtube spend:
 
 ```{r}
 
@@ -278,7 +280,7 @@ p <- ggplot(plot_data, aes(x = week, y = predicted_sales, color = scenario)) +
   geom_line(lwd = 0.5) +
   geom_vline(xintercept = nrow(df), linetype = "dashed", color = "gray40") +
   labs(
-    title = "Sales Forecast with Time-Varying Spend Plans",
+    title = "Sales Forecast with Time-Varying Spend Plans (click to zoom)",
     subtitle = "Baseline vs. +50% Facebook Increase",
     x = "Week",
     y = "Predicted Sales",
@@ -313,6 +315,9 @@ So, this doesn't seem like a good ROI based on this simple simulation. A more re
 
 ### References 
 
+Using R to Build a Simple Marketing Mix Model (MMM) and Make Predictions | Towards Data Science
 https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/
 
-https://CRAN.R-project.org/package=datarium
+Kassambara A (2019). _datarium: Data Bank for Statistical Analysis
+  and Visualization_. R package version 0.1.0.999,
+  <https://github.com/kassambara/datarium>.

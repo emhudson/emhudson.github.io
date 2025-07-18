@@ -42,6 +42,6 @@ Hello, Emily here! I am a behavioral ecologist by training, an R-based data wran
 
 When I'm not at my laptop, I might be gardening, watching birds, climbing rocks, sewing, or appreciating cute dogs. 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/EJHResumeJuly2021.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/EHudsonCVJuly2025.pdf" "newtab" >}}resumé{{< /staticref >}}.
 
 This website is a work-in-progress as I migrate from Google Sites. Pardon the dust! 
