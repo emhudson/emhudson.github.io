@@ -22,13 +22,12 @@ tags:
     ```
 
 
-I put together this simple demonstration of a media mix modeling strategy in R to document my process teaching myself this technique.
+I put together this simple demonstration of a media mix modeling strategy in R to document my process teaching myself this technique. I will use a sample dataset "marketing" from the R package `datarium`. This simulated dataset contains 200 weeks of sales data and marketing spends (in $1k units) for Youtube, Facebook and newspaper channels.
 
 It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools (`ggplot` and `plotly`).
 
 ## Load data
 
-I will use a sample dataset "marketing" from the R package `datarium`. This simulated dataset contains 200 weeks of sales data and marketing spends (in $1000 units) for youtube, facebook and and newspaper channels.
 
 ```{r}
 data(marketing)
