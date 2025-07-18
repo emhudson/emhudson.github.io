@@ -26,13 +26,12 @@ I put together this simple demonstration of a media mix modeling strategy in R t
 
 It is adapted from a tutorial at <https://towardsdatascience.com/building-a-marketing-mix-model-in-r-3a7004d21239/>, extended with additional packages, models and visualization tools (`ggplot` and `plotly`).
 
-## Load data
+## Load data and look at correlations
 
 
-```{r}
+```{r, echo = FALSE}
 data(marketing)
 df_sample <- marketing
-#View(df_sample)
 
 chart.Correlation(df_sample, histogram = TRUE, pch = 19)
 ```
@@ -204,7 +203,7 @@ y <- df_scaled$sales
 
 cvfit <- cv.glmnet(X, y, alpha = 1, standardize = FALSE)
 
-# --- Step 2: Simulate 100 weeks of time-varying future spend ---
+# ---  Simulate 100 weeks of time-varying future spend ---
 
 n_future <- 100
 future_weeks <- (nrow(df) + 1):(nrow(df) + n_future)
@@ -239,12 +238,12 @@ sim_realloc_scaled <- scale_future(data = sim_realloc, fb_mean, fb_sd, yt_mean, 
 X_base <- model.matrix(~ fb_spend_scaled + yt_spend_scaled, data = sim_base_scaled)[, -1]
 X_realloc <- model.matrix(~ fb_spend_scaled + yt_spend_scaled, data = sim_realloc_scaled)[, -1]
 
-# --- Step 4: Predict sales using Lasso model ---
+# --- Predict sales using Lasso model ---
 
 sim_base$predicted_sales <- predict(cvfit, newx = X_base, s = "lambda.min")
 sim_realloc$predicted_sales <- predict(cvfit, newx = X_realloc, s = "lambda.min")
 
-# --- Step 5: Combine with historical data for plotting ---
+# --- Combine with historical data for plotting ---
 
 df$scenario <- "Actual"
 df$week <- 1:nrow(df)
