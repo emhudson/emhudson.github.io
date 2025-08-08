@@ -53,11 +53,20 @@
     <loc>http://example.org/tag/avian/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
+    <loc>http://example.org/tag/bird-song/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://example.org/author/daizaburo-shizuka/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
+    <loc>http://example.org/author/emily-beach/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://example.org/tag/hybridization/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/junco-hyemalis/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/learning/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
@@ -71,8 +80,14 @@
     <loc>http://example.org/tag/recognition-systems/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
+    <loc>http://example.org/author/sarah-hourihan/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://example.org/tag/song/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/hourihan-2025-junco/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/speciation/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
@@ -80,11 +95,20 @@
     <loc>http://example.org/tag/species-recognition/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
+    <loc>http://example.org/tag/subspecies/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/sydnie-smith/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://example.org/publication/hudson-2020-role/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/publication/shizuka-2020-accept/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/ximena-leon-dumottuchi/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/zonotrichia-atricapilla/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>

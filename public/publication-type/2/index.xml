@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2 | Emily J. Hudson</title>
+    <title>-&#39;2&#39; | Emily J. Hudson</title>
     <link>http://example.org/publication-type/2/</link>
       <atom:link href="http://example.org/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
-    <description>2</description>
+    <description>-&#39;2&#39;</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
-      <title>2</title>
+      <title>-&#39;2&#39;</title>
       <link>http://example.org/publication-type/2/</link>
     </image>
+    
+    <item>
+      <title>Song distinguishability predicts reproductive isolation between subspecies of the dark-eyed junco</title>
+      <link>http://example.org/publication/hourihan-2025-junco/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hourihan-2025-junco/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>The role of nestling acoustic experience in song discrimination in a sparrow</title>
