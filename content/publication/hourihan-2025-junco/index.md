@@ -12,7 +12,7 @@ authors:
 - Nicole Creanza
 tags: [species recognition, speciation, subspecies, bird song, Junco hyemalis]
 categories: []
-date: '2020-01-01'
+date: '2023-09-15'
 lastmod: 2021 - 09 - 27T17:29:15 - 05:00
 featured: false
 draft: false
