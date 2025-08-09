@@ -33,7 +33,9 @@
   
     
   
-  <meta name="description" content="Authors: Abigail Searfoss, Nyssa Kantorek, Tara Stanley, Emily Hudson, Nicole Creanza
+  <meta name="description" content="(In revision)
+Authors:
+Abigail Searfoss, Emily Hudson, Nyssa Kantorek, Tara Stanley, Nicole Creanza
 This project (in progress) aims to examine the effects of various metrics of urbanization on bird song, broadly, in urban greenspace." />
 
   
@@ -295,7 +297,9 @@ This project (in progress) aims to examine the effects of various metrics of urb
   <meta property="og:site_name" content="Emily J. Hudson" />
   <meta property="og:url" content="http://example.org/project/nash-sm4-project/" />
   <meta property="og:title" content="Nashville Autonomous Recording &#43; BirdNET Project | Emily J. Hudson" />
-  <meta property="og:description" content="Authors: Abigail Searfoss, Nyssa Kantorek, Tara Stanley, Emily Hudson, Nicole Creanza
+  <meta property="og:description" content="(In revision)
+Authors:
+Abigail Searfoss, Emily Hudson, Nyssa Kantorek, Tara Stanley, Nicole Creanza
 This project (in progress) aims to examine the effects of various metrics of urbanization on bird song, broadly, in urban greenspace." /><meta property="og:image" content="http://example.org/project/nash-sm4-project/featured.jpg" />
     <meta property="twitter:image" content="http://example.org/project/nash-sm4-project/featured.jpg" /><meta property="og:locale" content="en-us" />
   
@@ -351,7 +355,7 @@ This project (in progress) aims to examine the effects of various metrics of urb
       "url": "http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Authors: Abigail Searfoss, Nyssa Kantorek, Tara Stanley, Emily Hudson, Nicole Creanza\nThis project (in progress) aims to examine the effects of various metrics of urbanization on bird song, broadly, in urban greenspace."
+  "description": "(In revision)\nAuthors:\nAbigail Searfoss, Emily Hudson, Nyssa Kantorek, Tara Stanley, Nicole Creanza\nThis project (in progress) aims to examine the effects of various metrics of urbanization on bird song, broadly, in urban greenspace."
 }
 </script>
 
@@ -767,15 +771,15 @@ This project (in progress) aims to examine the effects of various metrics of urb
       
 
 
-<div id="authors" class="section level4">
-<h4>Authors:</h4>
-<p>Abigail Searfoss, Nyssa Kantorek, Tara Stanley, Emily Hudson, Nicole Creanza</p>
+<p><strong>(In revision)</strong></p>
+<p><strong>Authors:</strong></p>
+<p>Abigail Searfoss, Emily Hudson, Nyssa Kantorek, Tara Stanley, Nicole Creanza</p>
 <p>This project (in progress) aims to examine the effects of various metrics of urbanization on bird song, broadly, in urban greenspace. Recorders were placed at 21 parks of varying size and proximity to urban environments throughout Nashville. In total, we collected almost 2800 hours of recordings over the course of 155 days.</p>
-<p>As an initial step, we used BirdNET API <a href="https://birdnet.cornell.edu/" class="uri">https://birdnet.cornell.edu/</a> to identify common species. Because of the nature of unsupervised annotation of autonomous recordings, this first pass of song identification gives us a crude approximation of abundance; one individual singing frequently is not distinguished from many individuals singing infrequently. Nonetheless, the amount of bird song heard from each species does give important information about the ecological community in each park.</p>
-</div>
-<div id="how-do-measures-of-anthropogenic-disturbance-affect-bird-song" class="section level2">
-<h2>How do measures of anthropogenic disturbance affect bird song?</h2>
-<p>[Define metrics] Song IDs were restricted to the 50 most common species.</p>
+<p>Using a map of artificial night sky brightness 32–37 as a proxy for degree of urbanization, we identified multiple locations to record (Fig. 1), covering the spectrum between rural and urban (Bortle class 4-9). While the primary focus was on Davidson County in the context of Nashville’s current population growth, locations of field work extend from Davidson County into surrounding counties (Henderson, Wilson, Dekalb, and Maury) for rural collection sites. Throughout the spring and summer of 2018 (March–August), two Wildlife Acoustics SM4 recorders were set to passively record at different parks, moving locations approximately every 1–2 weeks.</p>
+<p>The urban variables used were pulled from the Nashville Data Portal: number of Noise Complaints, the number of Building Permits Issued from 2018 to October 2020, and the location of major roads including busy, multiple-lane roads and local highways 39 (Fig. 3). Data points in other cities and counties were excluded from this analysis due to GIS data accessibility. We then performed spatial joins in QGIS to record both the number of noise complaints, building permits, major roads, and highways within that buffer region and the distance from the recording locations to each of the nearest urban variables.</p>
+<p>After the recordings were collected, as an initial step, we used <a href="https://birdnet.cornell.edu/">BirdNET API</a> to identify common species. Because of the nature of unsupervised annotation of autonomous recordings, this first pass of song identification gives us a crude approximation of abundance; one individual singing frequently is not distinguished from many individuals singing infrequently. Nonetheless, the amount of bird song heard from each species does give important information about the ecological community in each park.</p>
+<div id="how-do-measures-of-anthropogenic-disturbance-affect-the-species-community-of-bird-song" class="section level2">
+<h2>How do measures of anthropogenic disturbance affect the species community of bird song?</h2>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model: Y_mv_binom ~ .
@@ -798,12 +802,17 @@ This project (in progress) aims to examine the effects of various metrics of urb
 ## Arguments:
 ##  Test statistics calculated assuming uncorrelated response (for faster computation) 
 ##  P-value calculated using 999 iterations via PIT-trap resampling.</code></pre>
-<p>Looking at the whole community of species, light pollution levels (<a href="https://en.wikipedia.org/wiki/Bortle_scale">Bortle Scale</a>) and number of nearby noise complaints have the strongest effect on species composition.</p>
+<p>Looking at the whole community of species, light pollution levels (<a href="https://en.wikipedia.org/wiki/Bortle_scale">Bortle Scale</a>), nearby major roads, and number of nearby noise complaints have the strongest effect on species composition.</p>
+<p><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcMErG7WIGiWTG8khjOzeil2X_SZgrtnJb8iWsXYqvesJlnCHupFmwt5O3oGyJeEaP7jx4ZVcCFg1yinkw4lDsgo0WcB1p2YGq6vDa5YyyuOUkJZWW5WhR4kDJXVr18lV3HWxPAW6XMEgEWp-_QyYz4TLax?key=BUy3x7m6sWo9QmXTPlv52w7y" /></p>
+<p><strong>Figure 1. Locations and levels of light pollution of recording sites in and around Nashville, TN.</strong> The top image includes locations of all field sites. The inset provides a closer look at the locations around metro Nashville. The maps are adapted from <a href="http://www.lightpollutionmap.info">lightpollutionmap.info</a>. The data displayed is the World Atlas 2015 of artificial night sky brightness</p>
+<p>–</p>
 <p>However, none of the variables have a significant effect on individual species recording abundance when they are each run in a separate univariate test.</p>
 <pre><code>## Loading required package: permute</code></pre>
 <p>We can still look at the directional effects of the the significant predictors on species abundance, even if they aren’t significant in univariate tests.</p>
 <p><img src="http://example.org/project/nash-sm4-project/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="http://example.org/project/nash-sm4-project/index_files/figure-html/unnamed-chunk-5-2.png" width="672" /><img src="http://example.org/project/nash-sm4-project/index_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
-<p>A more sophisticated analysis would involve actually estimating abundance (counting individuals); the <a href="https://deepmind.google/discover/blog/how-ai-is-helping-advance-the-science-of-bioacoustics-to-save-endangered-species/">latest AI models</a> being applied to bioacoustics have this capability.</p>
+<p><strong>Fig 2.</strong> The coefficients from the three significant predictors (road proximity, noise complaints and light pollution) identified by the full generalized linear model. Species-level effects are shown, although none of these effects were identified as significant in post-hoc univariate tests.</p>
+<hr />
+<p>A more sophisticated analysis would involve actually estimating abundance (counting individuals); the <a href="https://deepmind.google/discover/blog/how-ai-is-helping-advance-the-science-of-bioacoustics-to-save-endangered-species/">latest AI models</a> being applied to bioacoustics have this capability. This is a future aim of this project.</p>
 </div>
 
     </div>
