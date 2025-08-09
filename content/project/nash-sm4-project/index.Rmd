@@ -1,0 +1,186 @@
+---
+title: "Nashville Autonomous Recording + BirdNET Project"
+author: "Emily"
+date: "2025-08-06"
+output: html_document
+tags:
+- R
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(mvabund)
+library(tidyverse)
+
+```
+
+#### Authors:
+
+Abigail Searfoss, Nyssa Kantorek, Tara Stanley, Emily Hudson, Nicole Creanza
+
+This project (in progress) aims to examine the effects of various metrics of urbanization on bird song, broadly, in urban greenspace. Recorders were placed at 21 parks of varying size and proximity to urban environments throughout Nashville. In total, we collected almost 2800 hours of recordings over the course of 155 days.
+
+As an initial step, we used BirdNET API <https://birdnet.cornell.edu/> to identify common species. Because of the nature of unsupervised annotation of autonomous recordings, this first pass of song identification gives us a crude approximation of abundance; one individual singing frequently is not distinguished from many individuals singing infrequently. Nonetheless, the amount of bird song heard from each species does give important information about the ecological community in each park.
+
+## Load data and look at correlations
+
+```{r, include = FALSE}
+
+
+full_diversity_data <- readRDS("full_diversity_data.rds")
+# 1. Separate response (Y) and predictor (X) variables
+Y <- full_diversity_data[,3:52] #species columns
+X <- full_diversity_data[,53:61]  # environmental predictors
+
+
+# To get count data for negative binomial distribution, multiply by constant "trial size"
+trial_size <- 100
+
+# Convert proportions to counts
+Y_counts <- round(Y* trial_size)   # successes
+
+Y_mv_binom <- mvabund(Y_counts)
+
+# fit <- manyglm(
+#   Y_mv_binom ~ ., 
+#   data = X, 
+#   family = "negative.binomial",
+# )
+# # Assess overall significance of predictors
+
+# Plot diagnostics
+#plot(fit)
+#summary(fit)
+
+#anova_res <- anova.manyglm(fit, resamp = "pit.trap", nBoot = 999)
+
+## The above code takes several minutes to run, to save time, load in the objects from a previous run:
+anova_res <- readRDS("anova_resampled.rds")
+fit <- readRDS("manyglm_fit.rds")
+anova_out <- anova(fit, p.uni = "adjusted")  # with adjusted p-values per species
+```
+
+```{r echo = FALSE}
+print(anova_res)
+```
+
+Looking at the whole community of species, light pollution levels ([Bortle Scale](https://en.wikipedia.org/wiki/Bortle_scale)) and number of nearby noise complaints have the strongest effect on species composition.
+
+However, none of the variables have a significant effect on individual species recording abundance when they are each run in a separate univariate test.
+
+```{r include = FALSE}
+#anova_out
+```
+
+```{r echo = FALSE}
+
+sig_predictors <- rownames(anova_res$table)[anova_res$table$`Pr(>Dev)` < 0.05 &
+                                               rownames(anova_res$table) != "(Intercept)"]
+# 
+# cat("Significant community predictors:", sig_predictors, "\n")
+
+## --- 3. SPECIES-LEVEL FOLLOW-UP ---
+# Get tidy summary of species-level tests
+univ_res <- summary(fit, test = "wald")  # species x predictor table
+tidy_univ <- as.data.frame(univ_res$test) %>%
+  tibble::rownames_to_column("species") %>%
+  pivot_longer(-species, names_to = "predictor", values_to = "p_value")
+
+# Filter to significant community predictors
+tidy_univ <- tidy_univ %>%
+  filter(predictor %in% sig_predictors) %>%
+  group_by(predictor) %>%
+  mutate(p_adj = p.adjust(p_value, method = "fdr")) %>%
+  ungroup()
+
+# Keep only significant species after FDR correction
+sig_species <- tidy_univ %>% filter(p_adj < 0.05)
+
+
+### NMDS plot, see if species composition shifts with roads
+library(vegan)
+library(ggplot2)
+
+# Extract species abundance matrix
+species_matrix <- as.matrix(Y) 
+
+# Run NMDS (non-metric multidimensional scaling)
+#nmds <- metaMDS(species_matrix, distance = "bray", k = 2, trymax = 100)
+
+# Prepare plotting dataframe
+#plot_df <- data.frame(
+#  NMDS1 = nmds$points[, 1],
+#  NMDS2 = nmds$points[, 2],
+#  nearby_major_roads = X$nearby_major_roads  # replace with your predictor df
+#)
+# 
+# ggplot(plot_df, aes(x = NMDS1, y = NMDS2, color = nearby_major_roads)) +
+#   geom_point(size = 3) +
+#   scale_color_viridis_c() +
+#   labs(title = "Non-metric Multidimensional Scaling of Species Composition",
+#        subtitle = "Colored by Nearby Major Roads",
+#        color = "Road Proximity") +
+#   theme_minimal()
+```
+
+We can still look at the directional effects of the the significant predictors on species abundance, even if they aren't significant in univariate tests.
+
+```{r echo=FALSE, fig.height=8}
+## Coefficients heatmaps
+
+coefs <- coef(fit)
+road_effects <- coefs["nearby_major_roads", ]  # assuming this row exists
+noise_effects <- coefs["nearby_noise_complaints", ]
+
+library(tibble)
+library(ggplot2)
+
+noise_df <- tibble(
+  Species = names(noise_effects),
+  Coefficient = as.numeric(noise_effects)
+)
+
+ggplot(noise_df, aes(x = reorder(Species, Coefficient), y = Coefficient)) +
+  geom_col(fill = "tomato1") +
+  coord_flip() +
+  labs(title = "Effect of Nearby Noise Complaints \n on Species' Recording Abundance",
+       x = "Species",
+       y = "Coefficient (from manyglm)") +
+  theme_minimal()
+
+
+
+light_effects <- coefs["world_atlas_2015_bortle_class", ]  # assuming this row exists
+
+light_df <- tibble(
+  Species = names(light_effects),
+  Coefficient = as.numeric(light_effects)
+)
+
+ggplot(light_df, aes(x = reorder(Species, Coefficient), y = Coefficient)) +
+  geom_col(fill = "darkgoldenrod2") +
+  coord_flip() +
+  labs(title = "Effect of Light Pollution (Bortle class) \n on Species' Recording Abundance",
+       x = "Species",
+       y = "Coefficient (from manyglm)") +
+  theme_minimal()
+# 
+# 
+# wtsp <- full_diversity_data %>% select(location,world_atlas_2015_bortle_class,nearby_major_roads,white_throated_sparrow)
+# plot(wtsp$white_throated_sparrow~wtsp$world_atlas_2015_bortle_class)#, col = wtsp$nearby_major_roads)
+# 
+# ggplot(wtsp, aes(x=nearby_major_roads, y = white_throated_sparrow, col = world_atlas_2015_bortle_class)) + 
+#   geom_point(size = 3) +
+#   theme_minimal()
+
+# 
+# light_road_corr <- full_diversity_data %>% select(location, world_atlas_2015_bortle_class,nearby_major_roads,average_background_d_b, average_foreground_d_b)
+# 
+# ggplot(light_road_corr, aes(x=nearby_major_roads, y = average_foreground_d_b, col = world_atlas_2015_bortle_class)) + 
+#   geom_point(size = 3) +
+#   theme_minimal()
+
+
+```
+
+A more sophisticated analysis would involve actually estimating abundance (counting individuals); the [latest AI models](https://deepmind.google/discover/blog/how-ai-is-helping-advance-the-science-of-bioacoustics-to-save-endangered-species/) being applied to bioacoustics have this capability.

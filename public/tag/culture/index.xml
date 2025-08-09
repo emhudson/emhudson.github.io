@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>culture | Emily J. Hudson</title>
+    <link>http://example.org/tag/culture/</link>
+      <atom:link href="http://example.org/tag/culture/index.xml" rel="self" type="application/rss+xml" />
+    <description>culture</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
+      <title>culture</title>
+      <link>http://example.org/tag/culture/</link>
+    </image>
+    
+    <item>
+      <title>Modeling how population size drives the evolution of birdsong, a functional cultural trait</title>
+      <link>http://example.org/publication/hudson-2021-ornament/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hudson-2021-ornament/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

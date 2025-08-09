@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>machine learning | Emily J. Hudson</title>
+    <link>http://example.org/tag/machine-learning/</link>
+      <atom:link href="http://example.org/tag/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>machine learning</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 15 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
+      <title>machine learning</title>
+      <link>http://example.org/tag/machine-learning/</link>
+    </image>
+    
+    <item>
+      <title>Song distinguishability predicts reproductive isolation between subspecies of the dark-eyed junco (Preprint)</title>
+      <link>http://example.org/publication/hourihan-2025-junco/</link>
+      <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hourihan-2025-junco/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,27 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://example.org/</loc>
-    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/project/nash-sm4-project/</loc>
+    <lastmod>2025-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/project/</loc>
+    <lastmod>2025-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/r/</loc>
+    <lastmod>2025-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2025-08-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/project/mediamix-project/</loc>
     <lastmod>2025-07-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/project/</loc>
-    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/r/</loc>
-    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tags/</loc>
-    <lastmod>2025-07-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://example.org/publication-type/2/</loc>
+    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/audio-recordings/</loc>
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/authors/</loc>
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/bird-song/</loc>
+    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/citizen-science/</loc>
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/author/emily-beach/</loc>
@@ -33,6 +42,9 @@
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/junco-hyemalis/</loc>
+    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/machine-learning/</loc>
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/author/nicole-creanza/</loc>
@@ -65,7 +77,19 @@
     <loc>http://example.org/author/ximena-leon-dumottuchi/</loc>
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://example.org/tag/birdsong/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/culture/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/learning/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
     <loc>http://example.org/publication/hudson-2021-ornament/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/theory/</loc>
     <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
     <loc>http://example.org/post/2021-07-07-hello-world/</loc>
@@ -77,6 +101,9 @@
     <loc>http://example.org/tag/acceptance-threshold/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
+    <loc>http://example.org/tag/autonomous-recordings/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
     <loc>http://example.org/tag/avian/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
@@ -84,9 +111,6 @@
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/hybridization/</loc>
-    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/learning/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/partial-reproductive-isolation/</loc>

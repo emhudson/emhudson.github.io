@@ -12,13 +12,12 @@ email: ""
 highlight_name: false
 interests:
 - Evolution of Behavior
-- Bird Culture
 - Using data for conservation
 - Machine learning
 - Data visualization
 
 
-role: evolutionary biologist and data fanatic
+role: evolutionary biologist and data enthusiast
 social:
 - icon: envelope
   icon_pack: fas

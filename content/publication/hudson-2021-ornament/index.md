@@ -7,7 +7,7 @@ summary: ''
 authors:
 - Emily J Hudson
 - Nicole Creanza
-tags: []
+tags: [birdsong, learning, theory, culture]
 categories: []
 date: '2022-04-10'
 lastmod: 2021-09-27T17:29:16-05:00

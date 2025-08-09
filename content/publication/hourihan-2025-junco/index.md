@@ -10,7 +10,7 @@ authors:
 - Emily Beach
 - Sydnie Smith
 - Nicole Creanza
-tags: [species recognition, speciation, subspecies, bird song, Junco hyemalis]
+tags: [species recognition, speciation, subspecies, bird song, Junco hyemalis, citizen science, audio recordings, machine learning]
 categories: []
 date: '2023-09-15'
 lastmod: 2021 - 09 - 27T17:29:15 - 05:00
@@ -21,7 +21,8 @@ draft: false
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: 'Photo by Kenneth Cole Schneider https://flic.kr/p/aFzJoa CC BY-NC-SA 2.0'
+  caption: ''
+#'Photo by Kenneth Cole Schneider https://flic.kr/p/aFzJoa CC BY-NC-SA 2.0'
   focal_point: ''
   preview_only: false
 

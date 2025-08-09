@@ -5,12 +5,59 @@
     <link>http://example.org/project/</link>
       <atom:link href="http://example.org/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 06 Aug 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
       <link>http://example.org/project/</link>
     </image>
+    
+    <item>
+      <title>Nashville Autonomous Recording &#43; BirdNET Project</title>
+      <link>http://example.org/project/nash-sm4-project/</link>
+      <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://example.org/project/nash-sm4-project/</guid>
+      <description>
+
+
+&lt;div id=&#34;authors&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Authors:&lt;/h4&gt;
+&lt;p&gt;Abigail Searfoss, Nyssa Kantorek, Tara Stanley, Emily Hudson, Nicole Creanza&lt;/p&gt;
+&lt;p&gt;This project (in progress) aims to examine the effects of various metrics of urbanization on bird song, broadly, in urban greenspace. Recorders were placed at 21 parks of varying size and proximity to urban environments throughout Nashville. In total, we collected almost 2800 hours of recordings over the course of 155 days.&lt;/p&gt;
+&lt;p&gt;As an initial step, we used BirdNET API &lt;a href=&#34;https://birdnet.cornell.edu/&#34; class=&#34;uri&#34;&gt;https://birdnet.cornell.edu/&lt;/a&gt; to identify common species. Because of the nature of unsupervised annotation of autonomous recordings, this first pass of song identification gives us a crude approximation of abundance; one individual singing frequently is not distinguished from many individuals singing infrequently. Nonetheless, the amount of bird song heard from each species does give important information about the ecological community in each park.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;load-data-and-look-at-correlations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Load data and look at correlations&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;## Analysis of Deviance Table
+## 
+## Model: Y_mv_binom ~ .
+## 
+## Multivariate test:
+##                                   Res.Df Df.diff    Dev Pr(&amp;gt;Dev)    
+## (Intercept)                           21                            
+## recording_length_h                    20       1  74.69    0.065 .  
+## world_atlas_2015_bortle_class         19       1 179.56    0.001 ***
+## viirs_2018_radiance_10_9w_cm_2_sr     18       1  79.30    0.058 .  
+## average_foreground_d_b                17       1  25.57    0.925    
+## average_background_d_b                16       1  75.71    0.128    
+## rms_difference                        15       1  61.38    0.239    
+## nearby_noise_complaints               14       1  76.87    0.044 *  
+## nearby_building_permits               13       1  74.54    0.144    
+## nearby_major_roads                    12       1  90.13    0.051 .  
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## Arguments:
+##  Test statistics calculated assuming uncorrelated response (for faster computation) 
+##  P-value calculated using 999 iterations via PIT-trap resampling.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looking at the whole community of species, light pollution levels (&lt;a href=&#34;https://en.wikipedia.org/wiki/Bortle_scale&#34;&gt;Bortle Scale&lt;/a&gt;) and number of nearby noise complaints have the strongest effect on species composition.&lt;/p&gt;
+&lt;p&gt;However, none of the variables have a significant effect on individual species recording abundance when they are each run in a separate univariate test.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: permute&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can still look at the directional effects of the the significant predictors on species abundance, even if they aren’t significant in univariate tests.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://example.org/project/nash-sm4-project/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;http://example.org/project/nash-sm4-project/index_files/figure-html/unnamed-chunk-5-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;A more sophisticated analysis would involve actually estimating abundance (counting individuals); the &lt;a href=&#34;https://deepmind.google/discover/blog/how-ai-is-helping-advance-the-science-of-bioacoustics-to-save-endangered-species/&#34;&gt;latest AI models&lt;/a&gt; being applied to bioacoustics have this capability.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Media Mix Modeling Demo</title>

@@ -8,7 +8,7 @@ authors:
 - Emily J Hudson
 - Nicole Creanza
 - Daizaburo Shizuka
-tags: [Song, avian, Zonotrichia atricapilla, recognition, learning]
+tags: [Song, avian, Zonotrichia atricapilla, recognition, learning, audio recordings, autonomous recordings]
 categories: []
 date: '2020-01-01'
 lastmod: 2021-09-27T17:29:15-05:00
