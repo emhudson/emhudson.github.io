@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
----# Documentation: <https://wowchemy.com/docs/managing-content/>
+---
 
 title: 'Song distinguishability predicts reproductive isolation between
 subspecies of the dark-eyed junco (Preprint)' subtitle: '' summary: ''
