@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>-&#39;2&#39; | Emily J. Hudson</title>
+    <title>2 | Emily J. Hudson</title>
     <link>http://example.org/publication-type/2/</link>
       <atom:link href="http://example.org/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
-    <description>-&#39;2&#39;</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 15 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <description>2</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
-      <title>-&#39;2&#39;</title>
+      <title>2</title>
       <link>http://example.org/publication-type/2/</link>
     </image>
-    
-    <item>
-      <title>Song distinguishability predicts reproductive isolation between subspecies of the dark-eyed junco (Preprint)</title>
-      <link>http://example.org/publication/hourihan-2025-junco/</link>
-      <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://example.org/publication/hourihan-2025-junco/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Modeling how population size drives the evolution of birdsong, a functional cultural trait</title>

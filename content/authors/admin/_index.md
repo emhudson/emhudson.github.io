@@ -12,7 +12,7 @@ email: ""
 highlight_name: false
 interests:
 - Evolution of Behavior
-- Using data for conservation
+- Using data for real-world good
 - Machine learning
 - Data visualization
 

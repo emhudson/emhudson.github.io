@@ -5,20 +5,12 @@
     <link>http://example.org/author/nicole-creanza/</link>
       <atom:link href="http://example.org/author/nicole-creanza/index.xml" rel="self" type="application/rss+xml" />
     <description>Nicole Creanza</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 15 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://example.org/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
       <title>Nicole Creanza</title>
       <link>http://example.org/author/nicole-creanza/</link>
     </image>
-    
-    <item>
-      <title>Song distinguishability predicts reproductive isolation between subspecies of the dark-eyed junco (Preprint)</title>
-      <link>http://example.org/publication/hourihan-2025-junco/</link>
-      <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://example.org/publication/hourihan-2025-junco/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Modeling how population size drives the evolution of birdsong, a functional cultural trait</title>

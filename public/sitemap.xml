@@ -21,61 +21,10 @@
     <lastmod>2025-07-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/publication-type/2/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/audio-recordings/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
     <loc>http://example.org/authors/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/bird-song/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/citizen-science/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/author/emily-beach/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/author/emily-j-hudson/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/junco-hyemalis/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/machine-learning/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/author/nicole-creanza/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/publication_types/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/publication/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/author/sarah-hourihan/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/publication/hourihan-2025-junco/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/speciation/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/species-recognition/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/subspecies/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/author/sydnie-smith/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/author/ximena-leon-dumottuchi/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/birdsong/</loc>
     <lastmod>2021-09-27T17:29:16-05:00</lastmod>
@@ -83,10 +32,22 @@
     <loc>http://example.org/tag/culture/</loc>
     <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
+    <loc>http://example.org/author/emily-j-hudson/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
     <loc>http://example.org/tag/learning/</loc>
     <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
     <loc>http://example.org/publication/hudson-2021-ornament/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/author/nicole-creanza/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication_types/</loc>
+    <lastmod>2021-09-27T17:29:16-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/publication/</loc>
     <lastmod>2021-09-27T17:29:16-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/theory/</loc>
@@ -99,6 +60,9 @@
     <lastmod>2021-07-07T16:56:49-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/acceptance-threshold/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/audio-recordings/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/autonomous-recordings/</loc>
@@ -123,6 +87,12 @@
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/song/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/speciation/</loc>
+    <lastmod>2021-09-27T17:29:15-05:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tag/species-recognition/</loc>
     <lastmod>2021-09-27T17:29:15-05:00</lastmod>
   </url><url>
     <loc>http://example.org/publication/hudson-2020-role/</loc>
@@ -189,6 +159,8 @@
     <lastmod>2021-09-27T17:29:14-05:00</lastmod>
   </url><url>
     <loc>http://example.org/admin/</loc>
+  </url><url>
+    <loc>http://example.org/publication/hourihan-2025-junco/</loc>
   </url><url>
     <loc>http://example.org/categories/</loc>
   </url><url>
