@@ -1,13 +1,7 @@
 ---
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
----
-
-title: 'Song distinguishability predicts reproductive isolation between
-subspecies of the dark-eyed junco (Preprint)' subtitle: '' summary: ''
+title: 'Song distinguishability predicts reproductive isolation between subspecies of the dark-eyed junco (Preprint)' 
+subtitle: '' 
+summary: ''
 authors:
 
 -   Sarah Hourihan
@@ -15,10 +9,16 @@ authors:
 -   Ximena León Du'Mottuchi
 -   Emily Beach
 -   Sydnie Smith
--   Nicole Creanza tags: \[species recognition, speciation, subspecies,
+-   Nicole Creanza 
+
+tags: [species recognition, speciation, subspecies,
     bird song, Junco hyemalis, citizen science, audio recordings,
-    machine learning\] categories: \[\] date: '2023-09-15' lastmod:
-    2021 - 09 - 27T17:29:15 - 05:00 featured: false draft: false
+    machine learning] 
+categories: [] 
+date: '2023-09-15'
+lastmod: "2025-08-21 08:41:54 CDT"
+featured: false 
+draft: false
 
 # Featured image
 
@@ -26,10 +26,10 @@ authors:
 
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 
-image: caption: ''
-
-\#'Photo by Kenneth Cole Schneider <https://flic.kr/p/aFzJoa> CC
-BY-NC-SA 2.0' focal_point: '' preview_only: false
+image: 
+  caption: 'Photo by Kenneth Cole Schneider https://flic.kr/p/aFzJoa CCBY-NC-SA 2.0' 
+  focal_point: '' 
+  preview_only: false
 
 # Projects (optional).
 
@@ -41,9 +41,11 @@ BY-NC-SA 2.0' focal_point: '' preview_only: false
 
 # Otherwise, set `projects = []`.
 
-projects: \[\] publishDate: '2024-09-27T22:29:15.531667Z'
-publication_types: -'2' abstract: "The dark-eyed junco (*Junco
-hyemalis*) has experienced rapid phenotypic diversification within the
+projects: [] 
+publishDate: '2024-09-27T22:29:15.531667Z'
+publication_types: 
+  -'2' 
+abstract: "The dark-eyed junco (*Junco hyemalis*) has experienced rapid phenotypic diversification within the
 last 18,000 years, resulting in several subspecies that reside in
 partially overlapping regions across North America. These subspecies
 have distinct plumage and morphology. If members of a subspecies
@@ -81,7 +83,14 @@ publication: 'Under Review'
 
 # - name: ""
 
-url: '' url_pdf:
-'<https://www.biorxiv.org/content/10.1101/2023.09.14.557432v1>'
-url_code: '' url_dataset: '' url_poster: '' url_project: '' url_slides:
-'' url_source: '' url_video: '' ---
+url: ''
+url_pdf: 'https://www.biorxiv.org/content/10.1101/2023.09.14.557432v1'
+url_code: '' 
+url_dataset: '' 
+url_poster: '' 
+url_project: '' 
+url_slides: '' 
+url_source: '' 
+url_video: '' 
+
+---

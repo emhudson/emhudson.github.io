@@ -424,6 +424,14 @@ and Visualization&lt;/em&gt;. R package version 0.1.0.999,
     </item>
     
     <item>
+      <title>Song distinguishability predicts reproductive isolation between subspecies of the dark-eyed junco (Preprint)</title>
+      <link>http://example.org/publication/hourihan-2025-junco/</link>
+      <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://example.org/publication/hourihan-2025-junco/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Modeling how population size drives the evolution of birdsong, a functional cultural trait</title>
       <link>http://example.org/publication/hudson-2021-ornament/</link>
       <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
@@ -488,81 +496,6 @@ and Visualization&lt;/em&gt;. R package version 0.1.0.999,
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://example.org/admin/config.yml</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://example.org/publication/hourihan-2025-junco/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://example.org/publication/hourihan-2025-junco/</guid>
-      <description>&lt;hr&gt;
-&lt;p&gt;title: &amp;lsquo;Song distinguishability predicts reproductive isolation between
-subspecies of the dark-eyed junco (Preprint)&amp;rsquo; subtitle: &#39;&#39; summary: &#39;&#39;
-authors:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Sarah Hourihan&lt;/li&gt;
-&lt;li&gt;Emily J Hudson&lt;/li&gt;
-&lt;li&gt;Ximena León Du&amp;rsquo;Mottuchi&lt;/li&gt;
-&lt;li&gt;Emily Beach&lt;/li&gt;
-&lt;li&gt;Sydnie Smith&lt;/li&gt;
-&lt;li&gt;Nicole Creanza tags: [species recognition, speciation, subspecies,
-bird song, Junco hyemalis, citizen science, audio recordings,
-machine learning] categories: [] date: &amp;lsquo;2023-09-15&amp;rsquo; lastmod:
-2021 - 09 - 27T17:29:15 - 05:00 featured: false draft: false&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;featured-image&#34;&gt;Featured image&lt;/h1&gt;
-&lt;h1 id=&#34;to-use-add-an-image-named-featuredjpgpng-to-your-pages-folder&#34;&gt;To use, add an image named &lt;code&gt;featured.jpg/png&lt;/code&gt; to your page&amp;rsquo;s folder.&lt;/h1&gt;
-&lt;h1 id=&#34;focal-points-smart-center-topleft-top-topright-left-right-bottomleft-bottom-bottomright&#34;&gt;Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.&lt;/h1&gt;
-&lt;p&gt;image: caption: &#39;&#39;&lt;/p&gt;
-&lt;p&gt;#&amp;lsquo;Photo by Kenneth Cole Schneider &lt;a href=&#34;https://flic.kr/p/aFzJoa&#34;&gt;https://flic.kr/p/aFzJoa&lt;/a&gt; CC
-BY-NC-SA 2.0&amp;rsquo; focal_point: &#39;&#39; preview_only: false&lt;/p&gt;
-&lt;h1 id=&#34;projects-optional&#34;&gt;Projects (optional).&lt;/h1&gt;
-&lt;h1 id=&#34;associate-this-post-with-one-or-more-of-your-projects&#34;&gt;Associate this post with one or more of your projects.&lt;/h1&gt;
-&lt;h1 id=&#34;simply-enter-your-projects-folder-or-file-name-without-extension&#34;&gt;Simply enter your project&amp;rsquo;s folder or file name without extension.&lt;/h1&gt;
-&lt;h1 id=&#34;eg-projects--internal-project-references-contentprojectdeep-learningindexmd&#34;&gt;E.g. &lt;code&gt;projects = [&amp;quot;internal-project&amp;quot;]&lt;/code&gt; references &lt;code&gt;content/project/deep-learning/index.md&lt;/code&gt;.&lt;/h1&gt;
-&lt;h1 id=&#34;otherwise-set-projects--&#34;&gt;Otherwise, set &lt;code&gt;projects = []&lt;/code&gt;.&lt;/h1&gt;
-&lt;p&gt;projects: [] publishDate: &amp;lsquo;2024-09-27T22:29:15.531667Z&amp;rsquo;
-publication_types: -&amp;lsquo;2&amp;rsquo; abstract: &amp;ldquo;The dark-eyed junco (&lt;em&gt;Junco
-hyemalis&lt;/em&gt;) has experienced rapid phenotypic diversification within the
-last 18,000 years, resulting in several subspecies that reside in
-partially overlapping regions across North America. These subspecies
-have distinct plumage and morphology. If members of a subspecies
-disproportionately mate with one another, we would expect genetic
-differences to accumulate between the subspecies. In parallel, their
-learned songs could also accumulate changes. If song is used by
-individuals to recognize members of their own subspecies during mate
-selection, which would prevent the production of less fit hybrid
-offspring between subspecies, then song differences might co-localize
-with subspecies boundaries. Here, we quantify 10 song features to
-explore subspecies-level song variation using song recordings from
-community-science databases. We build a machine learning classifier to
-measure how accurately the subspecies&#39; songs can be distinguished from
-one another. Here, we show that songs of dark-eyed junco subspecies
-exhibit significant song-feature differences. However, these differences
-do not necessarily lead to distinguishability between subspecies.
-Notably, we find that subspecies pairs with adjacent ranges that do not
-hybridize have much more distinguishable songs, and also more evidence
-for genetic differentiation, than pairs that are known to hybridize.
-Thus, song distinguishability appears to have predictive power about
-which subspecies will hybridize, suggesting that song might play a role
-in reinforcing certain subspecies boundaries more than others. Finally,
-we analyze subspecies-level song differences alongside available genetic
-data and geographic coordinates to characterize the current evolutionary
-landscape of the dark-eyed junco subspecies complex. We observe
-geographic signal in the song and genetic data, indicating that
-individuals who share a range are more likely to share song
-characteristics and be genetically similar. This study illuminates the
-existence of subspecies-level song differences in the dark-eyed junco
-and provides further clarity on the role learned song plays in
-reinforcing reproductive boundaries between dark-eyed junco subspecies.&amp;rdquo;
-publication: &amp;lsquo;Under Review&amp;rsquo;&lt;/p&gt;
-&lt;h1 id=&#34;links&#34;&gt;links:&lt;/h1&gt;
-&lt;h1 id=&#34;--name-&#34;&gt;- name: &amp;quot;&amp;quot;&lt;/h1&gt;
-&lt;p&gt;url: &#39;&#39; url_pdf:
-&amp;lsquo;&lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2023.09.14.557432v1&#34;&gt;https://www.biorxiv.org/content/10.1101/2023.09.14.557432v1&lt;/a&gt;&amp;rsquo;
-url_code: &#39;&#39; url_dataset: &#39;&#39; url_poster: &#39;&#39; url_project: &#39;&#39; url_slides:
-&#39;&#39; url_source: &#39;&#39; url_video: &#39;&#39; &amp;mdash;&lt;/p&gt;
-</description>
     </item>
     
     <item>
