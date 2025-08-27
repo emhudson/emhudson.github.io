@@ -5,6 +5,9 @@
     <loc>http://example.org/</loc>
     <lastmod>2025-08-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://example.org/tag/machine-learning/</loc>
+    <lastmod>2025-08-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://example.org/project/nash-sm4-project/</loc>
     <lastmod>2025-08-06T00:00:00+00:00</lastmod>
   </url><url>
@@ -42,9 +45,6 @@
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/tag/junco-hyemalis/</loc>
-    <lastmod>2023-09-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.org/tag/machine-learning/</loc>
     <lastmod>2023-09-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://example.org/author/nicole-creanza/</loc>

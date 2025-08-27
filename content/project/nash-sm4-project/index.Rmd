@@ -5,6 +5,8 @@ date: "2025-08-06"
 output: html_document
 tags:
 - R
+- machine learning
+- autonomous recordings
 ---
 
 ```{r setup, include=FALSE}
