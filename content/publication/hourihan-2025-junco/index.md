@@ -45,7 +45,7 @@ image:
 projects: [] 
 publishDate: '2024-09-27T22:29:15.531667Z'
 publication_types: 
-  -'2' 
+- '2' 
 abstract: "The dark-eyed junco (*Junco hyemalis*) has experienced rapid phenotypic diversification within the
 last 18,000 years, resulting in several subspecies that reside in
 partially overlapping regions across North America. These subspecies

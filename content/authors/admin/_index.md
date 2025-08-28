@@ -11,13 +11,13 @@ education:
 email: ""
 highlight_name: false
 interests:
-- Evolution of Behavior
+- Evolution of behavior
 - Using data for real-world good
 - Machine learning
 - Data visualization
 
 
-role: evolutionary biologist and data enthusiast
+role: evolutionary biologist and data enthusiast | she/they 
 social:
 - icon: envelope
   icon_pack: fas
