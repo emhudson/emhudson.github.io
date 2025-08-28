@@ -26,8 +26,9 @@ draft: false
 
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 
+# If I ever use the subspecies of junco photo the caption will be: Photo by Kenneth Cole Schneider https://flic.kr/p/aFzJoa CCBY-NC-SA 2.0
 image: 
-  caption: 'Photo by Kenneth Cole Schneider https://flic.kr/p/aFzJoa CCBY-NC-SA 2.0' 
+  caption: '' 
   focal_point: '' 
   preview_only: false
 
